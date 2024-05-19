@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Blog-Post-Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-green-400 font-sans antialized">
+    <!-- NAVBAR -->
+    <nav class="bg-blue-600 p-4 text-white flex justify-between">
+        <div>
+            <h1 class="text-3xl font-bold weight-bold">AI Blog Genertar</h1>
+
+        </div>
+        <div>
+            <a href="#" class="text-white hover:underline mx-4">Welcome {{ user.username }}</a>
+            <a href="/blog-list" class="text-white hover:underline mx-4">Saved Blog Posts</a>
+            <a href="#" class="text-white hover:underline">Logout</a>
+        </div>
+    </nav>
+        
+    <!-- MAIN CONTENT -->
+    <div class="container mx-auto mt-10 px-4 sm:px-0">
+        <div class="max-w-3xl mx-auto bg-green-100 p-6 rounded-lg shadow-md">
+            <section>
+                <h2 class="xl mb-4 font-semibold">Blog-Post-details</h2>
+                <div class="border border-blue-900 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold">{{blog_article_details.youtube_title}}</h3>
+                    <p class="text-grey-800">{{blog_article_details.generated_content}}</p>
+                    <hr class="my-4 border-blue-900">
+                    <h4 class="text-lg font-semibold"> YouTube title</h4>
+                    <p class="text-grey-800">{{blog_article_details.youtube_title}}</p>
+                    <h4 class="text-lg font-semibold mt-4">YouTube Link</h4>
+                    <a href="{{blog_article_details.youtube_link}}" class="text-red-500 hover:underline">{{blog_article_details.youtube_link}}</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="text-center p-4 text-black mt-6">
+        Powered by <a>VISHAL SHARMA</a>
+    </footer>
+
+
+</body>
+</html>
