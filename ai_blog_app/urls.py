@@ -25,5 +25,5 @@ urlpatterns = [
 ]
 
 urlpatterns = [
-    urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEIDA_ROOT)
+    urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 ]

@@ -85,12 +85,12 @@ WSGI_APPLICATION = 'ai_blog_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        'USER' :'',
-        'PASSWORD' : '',
-        'HOST' :'' ,
-        'PORT': ''
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ai_blog_generator',
+        'USER' :'root',
+        'PASSWORD' : 'root',
+        'HOST' :'127.0.0.1' ,
+        'PORT': '3306'
 
     }
 }
