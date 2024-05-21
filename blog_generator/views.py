@@ -28,35 +28,30 @@ def generate_blog(request):
             return JsonResponse({'Content': yt_link})
         except(KeyError,json.JSONDecodeError):
             return JsonResponse({'error' : 'Invalid data sent '},status= 400)
-        
-        # get yt title
+               
+         # get yt title
         title = yt_tittle(yt_link)
+        
         #get transcript
         transcription =get_transcription(yt_link)
         if not transcription:
-            return JsonResponse({'error':"Failed to get transcript"},status= 500)
+            return JsonResponse({'error':"Failed to get transcript"},status= 500)   
         
-
-
-
         # use OpenAi to generate the  blog
-
         blog_content =  generate_blog_from_transcription(transcription)
         if not blog_content:
             return JsonResponse({'error':"Failed to get generate"},status= 500)
-
+        
         # save blog article to database
-
         new_blog_article  =  BlogPost.ojects.create(
             user= request.user ,
             youtube_title = title,
             youtube_link = yt_link,
             generated_content = blog_content,
         )
-        new_blog_article.save()
+        new_blog_article.save()       
         # return blog article as a responce
-        return JsonResponse({'content': blog_content})
-
+        return JsonResponse({'content': blog_content}) 
     else:
         return JsonResponse({'error' : 'Invalid request method'},status= 405)
 
@@ -81,14 +76,14 @@ def download_audio(link):
 
 def get_transcription(link):
     audio_file = download_audio(link)
-    aai.settings.api_key = "You aai, key"
+    aai.settings.api_key = "Enter your aai key "
 
     transcriber = aai.Transcriber()
     transcript = transcriber.transcribe(audio_file)
     return transcript.text
 
 def generate_blog_from_transcription(transcription):
-    openai.api_key = "Your key to add this "
+    openai.api_key = "Enter you Open ai key"
 
     prompt = f"Based on the following transcript from a YouTube video, write a comprehensive blog article, write it based on the transcript, but dont make it look like a youtube video, make it look like a proper blog article:\n\n{transcription}\n\nArticle:"
 
